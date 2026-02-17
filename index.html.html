@@ -1,0 +1,1635 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="G.O.C - Brand Strategist | Building Brands That Lead, Scale, and Dominate">
+  <title>G.O.C | Brand Strategist</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F2C33',
+                        accent: '#EFA00F',
+                        dark: {
+                            900: '#0a0a0a',
+                            800: '#111111',
+                            700: '#1a1a1a',
+                            600: '#222222'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+  <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #EFA00F; border-radius: 4px; }
+        
+        /* Particle Canvas */
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Glow Effects */
+        .glow-accent {
+            box-shadow: 0 0 40px rgba(239, 160, 15, 0.3);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 40px rgba(239, 160, 15, 0.5);
+        }
+        
+        /* Magnetic Button */
+        .magnetic-btn {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Typing Cursor */
+        .typing-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Flip Card */
+        .flip-card {
+            perspective: 1000px;
+        }
+        
+        .flip-card-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        
+        /* Gradient Border */
+        .gradient-border {
+            position: relative;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            background: linear-gradient(135deg, #EFA00F, #0F2C33, #EFA00F);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            border-radius: inherit;
+        }
+        
+        /* Timeline */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #EFA00F;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(239, 160, 15, 0.5);
+        }
+        
+        /* Skill Card Hover */
+        .skill-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        /* Project Card */
+        .project-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px);
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+        
+        /* Nav Link Hover */
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #EFA00F;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Blog Card */
+        .blog-card {
+            transition: all 0.4s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        /* Service Card */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(239, 160, 15, 0.15);
+        }
+        
+        /* Loading Animation */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(239, 160, 15, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(239, 160, 15, 0.6); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        /* Form Focus */
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(239, 160, 15, 0.2);
+        }
+        
+        /* Dark mode transitions */
+        html { transition: background-color 0.3s ease, color 0.3s ease; }
+        
+        /* Category Filter */
+        .category-btn.active {
+            background: #EFA00F;
+            color: #0F2C33;
+        }
+    </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-white dark:bg-dark-900 text-gray-900 dark:text-white overflow-x-hidden"><!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+   <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="glass rounded-2xl px-6 py-4 flex items-center justify-between"><a href="#hero" class="text-2xl font-black tracking-tighter"> <span class="dark:text-white text-primary">G.<span class="text-accent">O</span>.C</span> </a>
+     <div class="hidden md:flex items-center gap-8"><a href="#about" class="nav-link text-sm font-medium hover:text-accent transition-colors">About</a> <a href="#skills" class="nav-link text-sm font-medium hover:text-accent transition-colors">Skills</a> <a href="#services" class="nav-link text-sm font-medium hover:text-accent transition-colors">Services</a> <a href="#projects" class="nav-link text-sm font-medium hover:text-accent transition-colors">Projects</a> <a href="#blog" class="nav-link text-sm font-medium hover:text-accent transition-colors">Blog</a> <a href="#contact" class="nav-link text-sm font-medium hover:text-accent transition-colors">Contact</a>
+     </div>
+     <div class="flex items-center gap-4"><button id="theme-toggle" class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:bg-accent/20 transition-all">
+       <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+       </svg>
+       <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+       </svg></button> <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-xl glass flex items-center justify-center">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div>
+   </div><!-- Mobile Menu -->
+   <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+    <div class="glass rounded-2xl p-6 flex flex-col gap-4"><a href="#about" class="text-sm font-medium hover:text-accent transition-colors">About</a> <a href="#skills" class="text-sm font-medium hover:text-accent transition-colors">Skills</a> <a href="#services" class="text-sm font-medium hover:text-accent transition-colors">Services</a> <a href="#projects" class="text-sm font-medium hover:text-accent transition-colors">Projects</a> <a href="#blog" class="text-sm font-medium hover:text-accent transition-colors">Blog</a> <a href="#contact" class="text-sm font-medium hover:text-accent transition-colors">Contact</a>
+    </div>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+   <canvas id="particles-canvas"></canvas>
+   <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
+   <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+    <div class="reveal">
+     <p class="text-accent font-semibold tracking-[0.3em] uppercase mb-6 text-sm">Brand Strategist • 5+ Years Experience</p>
+    </div>
+    <h1 class="reveal text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter mb-8" id="hero-title"><span class="block">GODSON O.</span> <span class="text-accent text-glow">CHIBUEZE</span></h1>
+    <div class="reveal h-16 sm:h-20 flex items-center justify-center mb-12">
+     <p class="text-xl sm:text-2xl lg:text-3xl font-light text-gray-600 dark:text-gray-400"><span id="typing-text"></span> <span class="typing-cursor text-accent">|</span></p>
+    </div>
+    <div class="reveal flex flex-col sm:flex-row gap-4 justify-center items-center"><a href="#contact" class="magnetic-btn group relative px-8 py-4 bg-accent text-primary font-bold rounded-xl overflow-hidden glow-accent hover:scale-105 transition-transform"> <span class="relative z-10 flex items-center gap-2"> Book a Call 
+       <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+       </svg></span> </a> <button id="download-resume" class="magnetic-btn group px-8 py-4 glass rounded-xl font-semibold hover:bg-accent/10 transition-all flex items-center gap-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>Download Resume</button>
+    </div>
+    <div class="reveal mt-20 flex justify-center"><a href="#about" class="animate-bounce">
+      <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg></a>
+    </div>
+   </div>
+  </section><!-- About Section -->
+  <section id="about" class="py-32 relative">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+     <div class="reveal">
+      <div class="relative">
+       <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary to-accent/50 p-1">
+        <div class="w-full h-full rounded-3xl bg-dark-700 dark:bg-dark-800 flex items-center justify-center overflow-hidden">
+         <img src="Images/Godson Image.png" alt="">
+        </div>
+       </div>
+       <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-3xl"></div>
+       <div class="absolute -top-6 -left-6 w-24 h-24 bg-primary/30 rounded-full blur-2xl"></div>
+      </div>
+     </div>
+     <div class="reveal">
+      <p class="text-accent font-semibold tracking-wider uppercase mb-4">About Me</p>
+      <h2 class="text-4xl lg:text-5xl font-black tracking-tight mb-6">Building Brands That <span class="text-accent">Dominate</span></h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">I help startups and growing businesses build powerful, cohesive brand systems — from identity to digital execution. A brand is not just a logo; it is market position, story, and competitive advantage.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+       <div class="glass rounded-xl p-4 text-center">
+        <p class="text-3xl font-black text-accent">5+</p>
+        <p class="text-sm text-gray-500">Years Experience</p>
+       </div>
+       <div class="glass rounded-xl p-4 text-center">
+        <p class="text-3xl font-black text-accent">50+</p>
+        <p class="text-sm text-gray-500">Projects Done</p>
+       </div>
+       <div class="glass rounded-xl p-4 text-center">
+        <p class="text-3xl font-black text-accent">30+</p>
+        <p class="text-sm text-gray-500">Happy Clients</p>
+       </div>
+      </div>
+      <h3 class="font-bold mb-4 text-lg">My Unique Edge:</h3>
+      <div class="flex flex-wrap gap-3"><span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">⚡ Speed</span> <span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">🏗️ Clean Architecture</span> <span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">💼 Business Mindset</span> <span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">🎨 Design + Code</span> <span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">🤖 AI Specialization</span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Skills Section -->
+  <section id="skills" class="py-32 bg-gray-50 dark:bg-dark-800">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">Expertise</p>
+     <h2 class="text-4xl lg:text-5xl font-black tracking-tight">Skills &amp; <span class="text-accent">Technologies</span></h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center group-hover:scale-110 transition-transform"><span class="text-2xl">Ae</span>
+      </div>
+      <p class="font-semibold text-sm">After Effects</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center group-hover:scale-110 transition-transform"><span class="text-2xl">Ai</span>
+      </div>
+      <p class="font-semibold text-sm">Illustrator</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform"><span class="text-2xl">Ps</span>
+      </div>
+      <p class="font-semibold text-sm">Photoshop</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+       <svg class="w-8 h-8" viewbox="0 0 24 24" fill="currentColor"><path d="M21.17 3H2.83A.83.83 0 002 3.83v16.34c0 .46.37.83.83.83h18.34c.46 0 .83-.37.83-.83V3.83a.83.83 0 00-.83-.83zM9 16H6v-2h3v2zm0-3H6v-2h3v2zm0-3H6V8h3v2zm9 6h-6v-2h6v2zm0-3h-6v-2h6v2zm0-3h-6V8h6v2z" />
+       </svg>
+      </div>
+      <p class="font-semibold text-sm">Microsoft Excel</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-accent to-yellow-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+       </svg>
+      </div>
+      <p class="font-semibold text-sm">Microsoft Packages</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+       </svg>
+      </div>
+      <p class="font-semibold text-sm">Capcut</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+       </svg>
+      </div>
+      <p class="font-semibold text-sm">Adobe Premier Pro</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+       </svg>
+      </div>
+      <p class="font-semibold text-sm">Prompt Engineering</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+       </svg>
+      </div>
+      <p class="font-semibold text-sm">HTML & CSS</p>
+     </div>
+     <div class="skill-card reveal glass rounded-2xl p-6 text-center group cursor-pointer">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+       </svg>
+      </div>
+      <p class="font-semibold text-sm">JavaScript</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Services Section -->
+  <section id="services" class="py-32">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">What I Offer</p>
+     <h2 class="text-4xl lg:text-5xl font-black tracking-tight">Services &amp; <span class="text-accent">Solutions</span></h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="service-card reveal glass rounded-3xl p-8 gradient-border">
+      <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
+       <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Logo Design</h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Creating memorable brand marks that capture your essence and stand out in the market.</p>
+     </div>
+     <div class="service-card reveal glass rounded-3xl p-8 gradient-border">
+      <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
+       <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Social Media Designs</h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Scroll-stopping visuals that amplify your brand presence across all platforms.</p>
+     </div>
+     <div class="service-card reveal glass rounded-3xl p-8 gradient-border">
+      <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
+       <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Video Editing</h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Professional video production that tells your story with cinematic quality.</p>
+     </div>
+     <div class="service-card reveal glass rounded-3xl p-8 gradient-border">
+      <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
+       <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Frontend Development</h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Modern, responsive websites built with cutting-edge technologies and best practices.</p>
+     </div>
+     <div class="service-card reveal glass rounded-3xl p-8 gradient-border">
+      <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
+       <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Data Analytics</h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Transform raw data into actionable insights that drive strategic decisions.</p>
+     </div>
+     <div class="service-card reveal glass rounded-3xl p-8 gradient-border">
+      <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
+       <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Consulting &amp; Training</h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Expert guidance and hands-on training to elevate your team's capabilities.</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Projects Section -->
+  <section id="projects" class="py-32 bg-gray-50 dark:bg-dark-800">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">Portfolio</p>
+     <h2 class="text-4xl lg:text-5xl font-black tracking-tight">Featured <span class="text-accent">Projects</span></h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-purple-600 to-pink-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><video src="Images/Vertcoin Animation.mp4" autoplay muted loop ></video></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button onclick="window.open('https://x.com/godson_GOC/status/1989564887714955360?s=20')" class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Vertcoin Launch Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Motion graphics and video content for a major product launch event.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Video</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Motion</span>
+         </div>
+         <p class="text-accent font-bold text-sm">2M+ Views</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-purple-600 to-pink-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><video src="Images/Izep Instructors.mp4" autoplay muted loop ></video></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button onclick="window.open('https://x.com/godson_GOC/status/1989564887714955360?s=20')" class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">iZEP Launch Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Motion graphics and video content for a major product launch event.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Video</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Motion</span>
+         </div>
+         <p class="text-accent font-bold text-sm">2M+ Views</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-purple-600 to-pink-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><video src="Images/Upcoming Space 1.mp4" autoplay muted loop ></video></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button onclick="window.open('https://x.com/godson_GOC/status/1989564887714955360?s=20')" class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Vertcoin Launch Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Motion graphics and video content for a major product launch event.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Video</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Motion</span>
+         </div>
+         <p class="text-accent font-bold text-sm">2M+ Views</p>
+        </div>
+       </div>
+      </div>
+     </div>
+
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-primary to-accent/50 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/Lika Logo Deliverables-06.png" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button onclick="window.open('pdfs/LIKA-LOGO-PRESENTATION.pdf', '_blank')" class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button> <button class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">MediaStartup Brand Identity</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete brand system for a TV Media startup including logo, guidelines, and digital assets.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Branding</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+240% Brand Recognition</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-primary to-accent/50 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/BARINAALE LOGO DELIVERABLES-11.png" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button onclick="window.open('pdfs/Barinnale-logo-Presentation.pdf', '_blank')" class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button> <button class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">BARINAALE Brand Identity</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete brand system for a Tailoring startup including logo, guidelines, and digital assets.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Branding</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+140% Brand Recognition</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-primary to-accent/50 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/Abdiel Pathfinder Club jpg-02.jpg" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button onclick="window.open('pdfs/Abdiel-Pathfinder-Emblem.pdf', '_blank')" class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button> <button class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Abdiel Pathfinder Logo</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete brand system for a Pathfinder club including logo, guidelines, and digital assets.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Branding</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+240% Brand Recognition</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-primary to-accent/50 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/Gifts Signature Treats Logo-07.png" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button onclick="window.open('pdfs/LIKA-LOGO-PRESENTATION.pdf', '_blank')" class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button> <button class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Gift's Signature Treats Brand Identity</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete brand system for a Bakery startup including logo, guidelines, and digital assets.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Branding</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+240% Brand Recognition</p>
+        </div>
+       </div>
+      </div>
+     </div>
+
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-emerald-500 to-teal-600 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/Analytics Dashboard.jpg" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Analytics Dashboard</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Interactive data visualization dashboard for business intelligence.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Analytics</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Excel</span>
+         </div>
+         <p class="text-accent font-bold text-sm">50% Time Saved</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-cyan-500 to-blue-600 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/E-commerce App.jpeg" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button> <button class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">E-Commerce Platform</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Full-stack development of a modern e-commerce solution with React.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">React</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Tailwind</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+180% Conversions</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-orange-500 to-red-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/Klevercomm.png" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Social Media Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete social media content strategy and design system.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Social</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+500% Engagement</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-orange-500 to-red-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/NAAS.png" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Social Media Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete social media content strategy and design system.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Social</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+500% Engagement</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-black-500 to-red-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/Work4.png" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Social Media Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete social media content strategy and design system.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Social</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+500% Engagement</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-black-500 to-red-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/Year 1 Picnic-01.jpg" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Social Media Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete social media content strategy and design system.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Social</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+500% Engagement</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-black-500 to-red-500 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl"><img src="Images/List Of Courses iZEP_Artboard 1 ann copy.png" alt=""></span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">Social Media Campaign</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete social media content strategy and design system.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Social</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Design</span>
+         </div>
+         <p class="text-accent font-bold text-sm">+500% Engagement</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="project-card reveal group">
+      <div class="glass rounded-3xl overflow-hidden">
+       <div class="aspect-video bg-gradient-to-br from-violet-600 to-purple-700 relative overflow-hidden">
+        <div class="project-image absolute inset-0 flex items-center justify-center transition-transform duration-500"><span class="text-6xl">🤖</span>
+        </div>
+        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4"><button class="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg></button>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-bold text-lg mb-2">AI Integration Project</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Custom AI solutions integrated into business workflows.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-2"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">AI</span> <span class="px-3 py-1 bg-primary/10 text-primary dark:text-white rounded-full text-xs font-medium">Automation</span>
+         </div>
+         <p class="text-accent font-bold text-sm">70% Efficiency Gain</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Experience Section -->
+  <section id="experience" class="py-32">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">Journey</p>
+     <h2 class="text-4xl lg:text-5xl font-black tracking-tight">Experience &amp; <span class="text-accent">Certifications</span></h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-16">
+     <div>
+      <h3 class="text-2xl font-bold mb-8 flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
+        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg></span> Work Experience</h3>
+      <div class="border-l-2 border-accent/30 pl-8 space-y-8">
+       <div class="timeline-item relative reveal">
+        <div class="glass rounded-2xl p-6">
+         <p class="text-accent text-sm font-semibold mb-1">2026 - Present</p>
+         <h4 class="font-bold text-lg mb-1">Senior Brand Strategist</h4>
+         <p class="text-gray-500 text-sm mb-3">Klevercomm Solutions</p>
+         <p class="text-gray-600 dark:text-gray-400 text-sm">Leading brand strategy projects for startups and enterprises, delivering comprehensive brand systems.</p>
+        </div>
+       </div>
+       <div class="timeline-item relative reveal">
+        <div class="glass rounded-2xl p-6">
+         <p class="text-accent text-sm font-semibold mb-1">2021 - 2024</p>
+         <h4 class="font-bold text-lg mb-1">ICT Instructor</h4>
+         <p class="text-gray-500 text-sm mb-3">Treasure Scientia School (TSS)</p>
+         <p class="text-gray-600 dark:text-gray-400 text-sm">Taught web development and coding fundamentals (HTML, CSS, JavaScript) to students, fostering practical ICT and problem-solving skills.</p>
+        </div>
+       </div>
+       <div class="timeline-item relative reveal">
+        <div class="glass rounded-2xl p-6">
+         <p class="text-accent text-sm font-semibold mb-1">2019 - 2025</p>
+         <h4 class="font-bold text-lg mb-1">Graphic Designer</h4>
+         <p class="text-gray-500 text-sm mb-3">Freelance / Vertcoin</p>
+         <p class="text-gray-600 dark:text-gray-400 text-sm">Created compelling visual content for digital and print media campaigns.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div>
+      <h3 class="text-2xl font-bold mb-8 flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
+        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg></span> Certifications</h3>
+      <div class="space-y-4">
+       <div class="reveal glass rounded-2xl p-6 flex items-start gap-4 hover:bg-accent/5 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">G</span>
+        </div>
+        <div>
+         <h4 class="font-bold">Introduction to Modern AI</h4>
+         <p class="text-gray-500 text-sm">Cisco Networking Academy • 2025</p>
+        </div>
+       </div>
+       <div class="reveal glass rounded-2xl p-6 flex items-start gap-4 hover:bg-accent/5 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">M</span>
+        </div>
+        <div>
+         <h4 class="font-bold">Web Development fundamentals</h4>
+         <p class="text-gray-500 text-sm">Sololearn • 2022</p>
+        </div>
+       </div>
+       <div class="reveal glass rounded-2xl p-6 flex items-start gap-4 hover:bg-accent/5 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">A</span>
+        </div>
+        <div>
+         <h4 class="font-bold">Adobe Illustrator (Graphics & Logo Design)</h4>
+         <p class="text-gray-500 text-sm">AQskills Academy • 2023</p>
+        </div>
+       </div>
+
+       <div class="reveal glass rounded-2xl p-6 flex items-start gap-4 hover:bg-accent/5 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">H</span>
+        </div>
+        <div>
+         <h4 class="font-bold">Introduction to Data Science</h4>
+         <p class="text-gray-500 text-sm">Cisco Networking Academy • 2023</p>
+        </div>
+       </div>
+       <div class="reveal glass rounded-2xl p-6 flex items-start gap-4 hover:bg-accent/5 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">A</span>
+        </div>
+        <div>
+         <h4 class="font-bold">Industrial Physics</h4>
+         <p class="text-gray-500 text-sm">Federal Univeristy of Technology Owerri (FUTO)• 2023</p>
+        </div>
+       </div>
+       <div class="reveal glass rounded-2xl p-6 flex items-start gap-4 hover:bg-accent/5 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center flex-shrink-0"><span class="text-white font-bold">H</span>
+        </div>
+        <div>
+         <h4 class="font-bold">Internet of Things (IoT)</h4>
+         <p class="text-gray-500 text-sm">Cisco Networking Academy • 2023</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Testimonials Section -->
+  <section id="testimonials" class="py-32 bg-gray-50 dark:bg-dark-800">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">Testimonials</p>
+     <h2 class="text-4xl lg:text-5xl font-black tracking-tight">What Clients <span class="text-accent">Say</span></h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="flip-card reveal h-80">
+      <div class="flip-card-inner relative w-full h-full">
+       <div class="flip-card-front absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-between">
+        <svg class="w-12 h-12 text-accent/30" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">"G.O.C transformed our brand identity completely. The attention to detail and strategic thinking behind every design decision was remarkable."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center text-white font-bold">
+          JD
+         </div>
+         <div>
+          <p class="font-bold"> Ekpei Andrew</p>
+          <p class="text-sm text-gray-500">CEO, Klevercomms</p>
+         </div>
+        </div>
+       </div>
+       <div class="flip-card-back absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-primary to-accent">
+        <p class="text-white text-4xl font-black mb-4">240%</p>
+        <p class="text-white/80">Brand Recognition Increase</p>
+       </div>
+      </div>
+     </div>
+     <div class="flip-card reveal h-80">
+      <div class="flip-card-inner relative w-full h-full">
+       <div class="flip-card-front absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-between">
+        <svg class="w-12 h-12 text-accent/30" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">"Working with Godson was a game-changer for our marketing. His video content consistently outperforms our benchmarks."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">
+          SA
+         </div>
+         <div>
+          <p class="font-bold">Sarah Anderson</p>
+          <p class="text-sm text-gray-500">Marketing Director - Vertcoin</p>
+         </div>
+        </div>
+       </div>
+       <div class="flip-card-back absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-purple-600 to-pink-500">
+        <p class="text-white text-4xl font-black mb-4">2M+</p>
+        <p class="text-white/80">Video Views Generated</p>
+       </div>
+      </div>
+     </div>
+     <div class="flip-card reveal h-80">
+      <div class="flip-card-inner relative w-full h-full">
+       <div class="flip-card-front absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-between">
+        <svg class="w-12 h-12 text-accent/30" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">"The website G.O.C built for us is absolutely stunning. Our conversion rate jumped significantly after launch."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold">
+          MK
+         </div>
+         <div>
+          <p class="font-bold">Uche Uwankwo</p>
+          <p class="text-sm text-gray-500">Founder, SUN Foundation</p>
+         </div>
+        </div>
+       </div>
+       <div class="flip-card-back absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-cyan-500 to-blue-600">
+        <p class="text-white text-4xl font-black mb-4">180%</p>
+        <p class="text-white/80">Conversion Rate Increase</p>
+       </div>
+      </div>
+     </div>
+     <div class="flip-card reveal h-80">
+      <div class="flip-card-inner relative w-full h-full">
+       <div class="flip-card-front absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-between">
+        <svg class="w-12 h-12 text-accent/30" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">"Exceptional data visualization work. Our team can now make decisions faster thanks to the dashboard G.O.C created."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold">
+          RP
+         </div>
+         <div>
+          <p class="font-bold">Dr. Peace Abana</p>
+          <p class="text-sm text-gray-500">Operations Manager - TSS</p>
+         </div>
+        </div>
+       </div>
+       <div class="flip-card-back absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-emerald-500 to-teal-600">
+        <p class="text-white text-4xl font-black mb-4">50%</p>
+        <p class="text-white/80">Decision Time Reduced</p>
+       </div>
+      </div>
+     </div>
+     <div class="flip-card reveal h-80">
+      <div class="flip-card-inner relative w-full h-full">
+       <div class="flip-card-front absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-between">
+        <svg class="w-12 h-12 text-accent/30" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">"Thank you for this design. Its Cozing class and sophistication. I'm launching my brand online officially. Thank you for this Logo."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white font-bold">
+          AL
+         </div>
+         <div>
+          <p class="font-bold">Ooanye</p>
+          <p class="text-sm text-gray-500">CEO, Barinaale Fenesse</p>
+         </div>
+        </div>
+       </div>
+       <div class="flip-card-back absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-orange-500 to-red-500">
+        <p class="text-white text-4xl font-black mb-4">500%</p>
+        <p class="text-white/80">Engagement Increase</p>
+       </div>
+      </div>
+     </div>
+     <div class="flip-card reveal h-80">
+      <div class="flip-card-inner relative w-full h-full">
+       <div class="flip-card-front absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-between">
+        <svg class="w-12 h-12 text-accent/30" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">"The AI automation solutions implemented have revolutionized our workflow. Highly recommend G.O.C for innovation."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-violet-600 to-purple-700 flex items-center justify-center text-white font-bold">
+          DW
+         </div>
+         <div>
+          <p class="font-bold">David Wilson</p>
+          <p class="text-sm text-gray-500">CTO, AI Startup</p>
+         </div>
+        </div>
+       </div>
+       <div class="flip-card-back absolute w-full h-full glass rounded-3xl p-8 flex flex-col justify-center items-center text-center bg-gradient-to-br from-violet-600 to-purple-700">
+        <p class="text-white text-4xl font-black mb-4">70%</p>
+        <p class="text-white/80">Efficiency Improvement</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Blog Section -->
+  <section id="blog" class="py-32">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">Insights</p>
+     <h2 class="text-4xl lg:text-5xl font-black tracking-tight">Latest <span class="text-accent">Articles</span></h2>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4 mb-12 reveal"><button class="category-btn active px-6 py-2 rounded-full text-sm font-medium transition-all" data-category="all">All</button> <button class="category-btn px-6 py-2 rounded-full text-sm font-medium glass hover:bg-accent/20 transition-all" data-category="branding">Branding</button> <button class="category-btn px-6 py-2 rounded-full text-sm font-medium glass hover:bg-accent/20 transition-all" data-category="design">Design</button> <button class="category-btn px-6 py-2 rounded-full text-sm font-medium glass hover:bg-accent/20 transition-all" data-category="tech">Tech</button> <button class="category-btn px-6 py-2 rounded-full text-sm font-medium glass hover:bg-accent/20 transition-all" data-category="strategy">Strategy</button>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+     <article class="blog-card reveal glass rounded-3xl overflow-hidden" data-category="branding">
+      <div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center"><span class="text-5xl"><img src="Images/Article 1.png" alt=""></span>
+      </div>
+      <div class="p-6">
+       <div class="flex items-center gap-4 mb-4"><span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">Branding</span> <span class="text-gray-500 text-xs">5 min read</span>
+       </div>
+       <h3 class="font-bold text-lg mb-2 hover:text-accent transition-colors cursor-pointer">Why Your Brand Strategy Is More Important Than Your Logo</h3>
+       <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Discover why successful brands focus on strategy before visual identity...</p>
+       <div class="flex items-center justify-between"><span class="text-gray-500 text-xs">Jan 15, 2024</span> <button class="text-accent text-sm font-medium hover:underline">Read More →</button>
+       </div>
+      </div>
+     </article>
+     <article class="blog-card reveal glass rounded-3xl overflow-hidden" data-category="design">
+      <div class="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center"><span class="text-5xl"><img src="Images/Article2.png" alt=""></span>
+      </div>
+      <div class="p-6">
+       <div class="flex items-center gap-4 mb-4"><span class="px-3 py-1 bg-purple-500/10 text-purple-500 rounded-full text-xs font-medium">Design</span> <span class="text-gray-500 text-xs">7 min read</span>
+       </div>
+       <h3 class="font-bold text-lg mb-2 hover:text-accent transition-colors cursor-pointer">The Psychology of Color in Brand Design</h3>
+       <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">How strategic color choices can influence customer perception and behavior...</p>
+       <div class="flex items-center justify-between"><span class="text-gray-500 text-xs">Jan 10, 2024</span> <button class="text-accent text-sm font-medium hover:underline">Read More →</button>
+       </div>
+      </div>
+     </article>
+     <article class="blog-card reveal glass rounded-3xl overflow-hidden" data-category="tech">
+      <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center"><span class="text-5xl"><img src="Images/GOC teaching.jpg" alt=""></span>
+      </div>
+      <div class="p-6">
+       <div class="flex items-center gap-4 mb-4"><span class="px-3 py-1 bg-cyan-500/10 text-cyan-500 rounded-full text-xs font-medium">Tech</span> <span class="text-gray-500 text-xs">10 min read</span>
+       </div>
+       <h3 class="font-bold text-lg mb-2 hover:text-accent transition-colors cursor-pointer">Mentoring Future Web Developers</h3>
+       <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Sharing my journey of teaching, mentoring, and empowering young creators to turn curiosity into code and ideas into digital reality....</p>
+       <div class="flex items-center justify-between"><span class="text-gray-500 text-xs">Jan 5, 2024</span> <button class="text-accent text-sm font-medium hover:underline">Read More →</button>
+       </div>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section><!-- CTA Section -->
+  <section class="py-32 relative overflow-hidden">
+   <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-accent/20"></div>
+   <div class="absolute inset-0"><img src="Images/GOC teaching2.png" alt="">
+    <div class="absolute top-20 left-20 w-72 h-72 bg-accent/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+   </div>
+   <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <div class="reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">Ready to Transform?</p>
+     <h2 class="text-4xl lg:text-6xl font-black tracking-tight text-white mb-6">Let's Build Your<br><span class="text-accent text-glow">Brand Dominance</span></h2>
+     <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Whether you're launching a startup or scaling an enterprise, let's create a brand system that commands attention and drives growth.</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#contact" class="magnetic-btn px-10 py-5 bg-accent text-primary font-bold rounded-xl glow-accent hover:scale-105 transition-transform text-lg"> Start Your Project </a> <a href="#projects" class="magnetic-btn px-10 py-5 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all text-lg"> View Portfolio </a>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="py-32 bg-gray-50 dark:bg-dark-800">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+     <p class="text-accent font-semibold tracking-wider uppercase mb-4">Get In Touch</p>
+     <h2 class="text-4xl lg:text-5xl font-black tracking-tight">Let's <span class="text-accent">Connect</span></h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-16">
+     <div class="reveal">
+      <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+      <form id="contact-form" class="space-y-6">
+       <div class="grid sm:grid-cols-2 gap-6">
+        <div><label for="name" class="block text-sm font-medium mb-2">Name</label> <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 rounded-xl glass border-0 focus:ring-2 focus:ring-accent outline-none transition-all bg-white dark:bg-dark-700">
+        </div>
+        <div><label for="email" class="block text-sm font-medium mb-2">Email</label> <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl glass border-0 focus:ring-2 focus:ring-accent outline-none transition-all bg-white dark:bg-dark-700">
+        </div>
+       </div>
+       <div><label for="subject" class="block text-sm font-medium mb-2">Subject</label> <input type="text" id="subject" name="subject" required class="form-input w-full px-4 py-3 rounded-xl glass border-0 focus:ring-2 focus:ring-accent outline-none transition-all bg-white dark:bg-dark-700">
+       </div>
+       <div><label for="message" class="block text-sm font-medium mb-2">Message</label> <textarea id="message" name="message" rows="5" required class="form-input w-full px-4 py-3 rounded-xl glass border-0 focus:ring-2 focus:ring-accent outline-none transition-all resize-none bg-white dark:bg-dark-700"></textarea>
+       </div><button type="submit" class="magnetic-btn w-full sm:w-auto px-8 py-4 bg-accent text-primary font-bold rounded-xl glow-accent hover:scale-105 transition-transform flex items-center justify-center gap-2"> <span>Send Message</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        </svg></button>
+      </form>
+      <div id="form-message" class="mt-4 hidden"></div>
+     </div>
+     <div class="reveal">
+      <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+      <div class="space-y-6 mb-10"><a href="mailto:godsonchibuez@gmail.com" class="flex items-center gap-4 glass rounded-2xl p-4 hover:bg-accent/10 transition-colors group">
+        <div class="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+         <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+         </svg>
+        </div>
+        <div>
+         <p class="text-sm text-gray-500">Email</p>
+         <p class="font-semibold" id="contact-email-display">godsonchibuez@gmail.com</p>
+        </div></a> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 glass rounded-2xl p-4 hover:bg-accent/10 transition-colors group">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+         <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+         </svg>
+        </div>
+        <div>
+         <p class="text-sm text-gray-500">LinkedIn</p>
+         <p class="font-semibold">Connect with me</p>
+        </div></a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 glass rounded-2xl p-4 hover:bg-accent/10 transition-colors group">
+        <div class="w-12 h-12 rounded-xl bg-gray-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+         </svg>
+        </div>
+        <div>
+         <p class="text-sm text-gray-500">GitHub</p>
+         <p class="font-semibold">View my code</p>
+        </div></a> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 glass rounded-2xl p-4 hover:bg-accent/10 transition-colors group">
+        <div class="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+         <svg class="w-6 h-6 text-sky-500" fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+         </svg>
+        </div>
+        <div>
+         <p class="text-sm text-gray-500">Twitter / X</p>
+         <p class="font-semibold">Follow updates</p>
+        </div></a>
+      </div>
+      <div class="glass rounded-2xl p-6">
+       <h4 class="font-bold mb-2">Availability</h4>
+       <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Currently accepting new projects for Q1 2026. Response time: 24-48 hours.</p>
+       <div class="flex items-center gap-2"><span class="w-3 h-3 bg-green-500 rounded-full pulse-glow"></span> <span class="text-sm font-medium text-green-500">Available for work</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="py-12 border-t border-gray-200 dark:border-dark-700">
+   <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+     <div class="flex items-center gap-2"><span class="text-2xl font-black">G.<span class="text-accent">O</span>.C</span> <span class="text-gray-500">|</span> <span class="text-gray-500 text-sm">Brand Strategist</span>
+     </div>
+     <p class="text-gray-500 text-sm">© 2024 Godson O. Chibueze. All rights reserved.</p>
+     <div class="flex items-center gap-4"><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:bg-accent/20 transition-all">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+       </svg></a> <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:bg-accent/20 transition-all">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+       </svg></a> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass flex items-center justify-center hover:bg-accent/20 transition-all">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+       </svg></a>
+     </div>
+    </div>
+   </div>
+  </footer><!-- AI Chatbot -->
+  <div id="chatbot" class="fixed bottom-6 right-6 z-50">
+   <div id="chat-window" class="chatbot-container hidden mb-4 w-80 sm:w-96 glass rounded-3xl overflow-hidden shadow-2xl">
+    <div class="bg-gradient-to-r from-primary to-accent p-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"><span class="text-xl">🤖</span>
+      </div>
+      <div>
+       <p class="font-bold text-white text-sm">G.O.C Assistant</p>
+       <p class="text-white/70 text-xs">Online</p>
+      </div>
+     </div><button id="close-chat" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors">
+      <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg></button>
+    </div>
+    <div id="chat-messages" class="h-80 overflow-y-auto p-4 space-y-4 bg-white dark:bg-dark-800">
+     <div class="flex gap-3">
+      <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0"><span>🤖</span>
+      </div>
+      <div class="glass rounded-2xl rounded-tl-none p-3 max-w-[80%]">
+       <p class="text-sm">Hi! 👋 I'm G.O.C's virtual assistant. How can I help you today?</p>
+      </div>
+     </div>
+    </div>
+    <div class="p-4 border-t border-gray-200 dark:border-dark-700 bg-white dark:bg-dark-800">
+     <div class="flex gap-2"><input type="text" id="chat-input" placeholder="Type a message..." class="flex-1 px-4 py-2 rounded-xl glass border-0 text-sm focus:ring-2 focus:ring-accent outline-none bg-gray-100 dark:bg-dark-700"> <button id="send-message" class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center hover:scale-105 transition-transform">
+       <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+       </svg></button>
+     </div>
+    </div>
+   </div><button id="chat-toggle" class="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center shadow-lg glow-accent hover:scale-110 transition-transform"> <span class="text-2xl">💬</span> </button>
+  </div>
+  <script>
+        // Default Configuration
+        const defaultConfig = {
+            hero_name: 'Godson O. Chibueze',
+            hero_tagline: 'Building Brands That Lead, Scale, and Dominate.',
+            contact_email: 'godsonchibuez@gmail.com',
+            background_color: '#ffffff',
+            text_color: '#0F2C33',
+            accent_color: '#EFA00F'
+        };
+
+        let config = { ...defaultConfig };
+
+        // Element SDK Integration
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange: async (newConfig) => {
+                    config = { ...defaultConfig, ...newConfig };
+                    applyConfig();
+                },
+                mapToCapabilities: (cfg) => ({
+                    recolorables: [
+                        {
+                            get: () => cfg.background_color || defaultConfig.background_color,
+                            set: (value) => window.elementSdk.setConfig({ background_color: value })
+                        },
+                        {
+                            get: () => cfg.text_color || defaultConfig.text_color,
+                            set: (value) => window.elementSdk.setConfig({ text_color: value })
+                        },
+                        {
+                            get: () => cfg.accent_color || defaultConfig.accent_color,
+                            set: (value) => window.elementSdk.setConfig({ accent_color: value })
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (cfg) => new Map([
+                    ['hero_name', cfg.hero_name || defaultConfig.hero_name],
+                    ['hero_tagline', cfg.hero_tagline || defaultConfig.hero_tagline],
+                    ['contact_email', cfg.contact_email || defaultConfig.contact_email]
+                ])
+            });
+        }
+
+        function applyConfig() {
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                const name = config.hero_name || defaultConfig.hero_name;
+                const nameParts = name.split(' ');
+                if (nameParts.length >= 2) {
+                    const lastName = nameParts.pop();
+                    const firstNames = nameParts.join(' ');
+                    heroTitle.innerHTML = `<span class="block">${firstNames}</span><span class="text-accent text-glow">${lastName}</span>`;
+                }
+            }
+
+            const emailDisplay = document.getElementById('contact-email-display');
+            if (emailDisplay) {
+                emailDisplay.textContent = config.contact_email || defaultConfig.contact_email;
+            }
+        }
+
+        // Particle Animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            const hero = document.getElementById('hero');
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+        }
+
+        function createParticles() {
+            particles = [];
+            const particleCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 1,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const isDark = document.documentElement.classList.contains('dark');
+            const particleColor = isDark ? '239, 160, 15' : '15, 44, 51';
+
+            particles.forEach((particle, index) => {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+
+                if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+                if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${particleColor}, ${particle.opacity})`;
+                ctx.fill();
+
+                particles.forEach((particle2, index2) => {
+                    if (index !== index2) {
+                        const dx = particle.x - particle2.x;
+                        const dy = particle.y - particle2.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particle.x, particle.y);
+                            ctx.lineTo(particle2.x, particle2.y);
+                            ctx.strokeStyle = `rgba(${particleColor}, ${0.1 * (1 - distance / 120)})`;
+                            ctx.stroke();
+                        }
+                    }
+                });
+            });
+
+            animationId = requestAnimationFrame(animateParticles);
+        }
+
+        // Typing Animation
+        const taglines = [
+            "Building Brands That Lead, Scale, and Dominate.",
+            "Transforming Ideas Into Market Leaders.",
+            "Strategic Brand Systems for Growth.",
+            "Design + Strategy + Execution."
+        ];
+        let taglineIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeText() {
+            const currentTagline = taglines[taglineIndex];
+            const typingElement = document.getElementById('typing-text');
+            
+            if (isDeleting) {
+                typingElement.textContent = currentTagline.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typingElement.textContent = currentTagline.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentTagline.length) {
+                isDeleting = true;
+                typingSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                taglineIndex = (taglineIndex + 1) % taglines.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(typeText, typingSpeed);
+        }
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        function setTheme(dark) {
+            if (dark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme(true);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        function handleNavScroll() {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('bg-white/80', 'dark:bg-dark-900/80', 'backdrop-blur-xl');
+            } else {
+                navbar.classList.remove('bg-white/80', 'dark:bg-dark-900/80', 'backdrop-blur-xl');
+            }
+            
+            lastScroll = currentScroll;
+        }
+
+        // Blog Category Filter
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+
+                blogCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Contact Form
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            formMessage.className = 'mt-4 p-4 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300';
+            formMessage.textContent = 'Thank you for your message! I\'ll get back to you within 24-48 hours.';
+            formMessage.classList.remove('hidden');
+            
+            contactForm.reset();
+            
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Chatbot
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+        const chatInput = document.getElementById('chat-input');
+        const sendMessage = document.getElementById('send-message');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const botResponses = {
+            'hi': 'Hello! 👋 Welcome to G.O.C\'s portfolio. How can I assist you today?',
+            'hello': 'Hi there! 👋 I\'m here to help you learn more about G.O.C\'s services. What would you like to know?',
+            'services': 'G.O.C offers: 🎨 Logo Design, 📱 Social Media Designs, 🎬 Video Editing, 💻 Frontend Development, 📊 Data Analytics, and 📚 Consulting & Training. Which one interests you?',
+            'contact': 'You can reach G.O.C at godsonchibuez@gmail.com or use the contact form above. He typically responds within 24-48 hours! 📧',
+            'price': 'Project pricing varies based on scope and requirements. I\'d recommend booking a call to discuss your specific needs and get a custom quote. Want me to guide you to the contact section?',
+            'hire': 'Great! G.O.C is currently available for new projects. You can book a discovery call using the "Book a Call" button or fill out the contact form. What type of project do you have in mind?',
+            'experience': 'G.O.C has 5+ years of experience in brand strategy, design, and digital execution. He\'s worked with startups and enterprises across various industries. 💼',
+            'portfolio': 'Check out the Projects section above to see some of G.O.C\'s best work. Each project showcases real impact metrics and technologies used. 🚀',
+            'default': 'I\'m here to help! You can ask me about G.O.C\'s services, experience, portfolio, or how to get in touch. What would you like to know? 🤔'
+        };
+
+        function getBotResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            for (const [key, response] of Object.entries(botResponses)) {
+                if (lowerMessage.includes(key)) {
+                    return response;
+                }
+            }
+            
+            return botResponses.default;
+        }
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex gap-3 ${isUser ? 'justify-end' : ''}`;
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="bg-accent text-primary rounded-2xl rounded-tr-none p-3 max-w-[80%]">
+                        <p class="text-sm">${text}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                        <span>🤖</span>
+                    </div>
+                    <div class="glass rounded-2xl rounded-tl-none p-3 max-w-[80%]">
+                        <p class="text-sm">${text}</p>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatWindow.classList.add('hidden');
+        });
+
+        function handleSendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    addMessage(response);
+                }, 800);
+            }
+        }
+
+        sendMessage.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+
+        // Magnetic Button Effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+
+        // Download Resume (Demo)
+        document.getElementById('download-resume').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = 'pdfs/Godson_Onyenkachi_Chibueze_mCV.pdf'; // Path to your PDF file
+    link.download = 'Godson_Chibueze_Resume.pdf'; // Name user downloads
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+
+
+        // Initialize
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            createParticles();
+            animateParticles();
+            typeText();
+            reveal();
+            applyConfig();
+        });
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+
+        window.addEventListener('scroll', () => {
+            reveal();
+            handleNavScroll();
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce5bdba8465cce2',t:'MTc3MTE2ODMyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
